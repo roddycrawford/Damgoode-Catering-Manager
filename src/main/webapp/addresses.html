@@ -1,0 +1,157 @@
+<div class="container">
+	<div class="container text-dgp-black">
+		<div ng-show="showMainAddressScreen">
+			<button type="button" class="btn btn-success detailButtons"
+				ng-click="updateAddressScreen(emptyAddress)">
+				<span class="glyphicon glyphicon-plus"></span>
+				 Add New Address
+			</button>
+			<table class="table table-hover table-bordered text-center">
+				<tr>
+					<td colspan="3" class='text-center bg-dgp-red text-dgp-gray'>
+						<h4><strong>All Addresses</strong></h4>
+					</td>
+				</tr>
+				<tr class='bg-dgp-gray'>
+					<th class="text-center">Address Id</th>
+					<th class="text-center">Location Name</th>
+					<th class="text-center">Street Address</th>
+				</tr>
+				<tr class='table-info-row' 
+					ng-repeat="address in addresses" 
+					ng-click="updateAddressScreen(address)">
+					<td class="table-info-row">{{address.addressId}}</td>
+					<td class="table-info-row">{{address.businessName}}</td>
+					<td class="table-info-row">{{address.streetNum + " " + address.streetName}}</td>
+				</tr>
+				<tr>
+					<td colspan="3" class='text-center bg-dgp-gray'>
+						<h4>Select an Address for Detail</h4>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div ng-show="showAddressDetailScreen">
+			<form name="addressForm" novalidate>
+				<div class="detailButtons">
+					<button type="button" class="btn btn-success"
+						ng-click="saveAddress()" ng-disabled="addressForm.$invalid">
+						<span class='fa fa-save'></span>
+						 Save Address
+					</button>
+					<button type="button" class="btn btn-warning"
+						ng-click="returnToAllAddresses()">
+						Return to List 
+						<span class="glyphicon glyphicon-share-alt"></span>
+					</button>
+				</div>
+				<table class="table table-bordered bg-dgp-gray">
+					<tr class="bg-dgp-red">
+						<th class="text-center">Address Id: {{addressToUpdate.addressId}}</th>
+					</tr>
+					<tr>
+						<td>
+							<div class="form-group row">
+								<div class="col-sm-8">
+									<label for="locationName">Location Name: </label>
+									<input class="form-control" id="locationName" type="text" 
+										ng-model="addressToUpdate.businessName" 
+										maxlength="25" />
+								</div>
+								<div class="col-sm-4">
+									<label for="addressType">Address Type: 
+										<span class="text-danger" ng-show="addressForm.addressType.$invalid">
+											Required!
+										</span>
+									</label> 
+									<select id="addressType" name="addressType" class="form-control" 
+										ng-options="value for value in addressTypes" 
+										ng-model="addressToUpdate.addressType" required>
+									</select>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="form-group row">
+								<div class="col-sm-3">
+									<label for="streetNum">Street Number: 
+										<span class="text-danger" ng-show="addressForm.streetNum.$invalid">
+											Required!
+										</span>
+									</label>
+									<input id="streetNum" name="streetNum" type="text" class="form-control"
+										ng-model="addressToUpdate.streetNum" 
+										maxlength="10" required />	
+								</div>
+								<div class="col-sm-5">
+									<label for="streetName">Street Name: 
+										<span class="text-danger" ng-show="addressForm.streetName.$invalid">
+											Required!
+										</span>
+									</label>
+									<input id="streetName" name= "streetName" type="text" class="form-control"
+										ng-model="addressToUpdate.streetName"
+										maxlength="50" required />
+								</div>
+								<div class="col-sm-4">
+									<label for="roomNum">Room/Suite/Apt Number:</label>
+									<input id="roomNum" type="text" class="form-control" 
+										ng-model="addressToUpdate.roomNum"
+										maxlength="11" />
+								</div>		
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="form-group row">
+								<div class="col-xs-5">
+									<label for="city">City: 
+										<span class="text-danger" ng-show="addressForm.city.$invalid">
+											Required!
+										</span>
+									</label>
+									<input class="form-control" name="city" id="city" type="text" 
+										ng-model="addressToUpdate.city"
+										maxlength="15" required/>
+								</div>
+								<div class="col-sm-2">
+									<label for="state">State: 
+										<span class="text-danger" ng-show="addressForm.state.$invalid">
+											Required!
+										</span>
+									</label>
+									<input class="form-control" name="state" id="state" type="text" 
+										ng-model="addressToUpdate.state"
+										maxlength="2" required />
+								</div>
+								<div class="col-sm-5">
+									<label for="zipCode">Zip Code: 
+										<span class="text-danger" ng-show="addressForm.zipCode.$invalid">
+											Required!
+										</span>
+									</label>
+									<input class="form-control" name="zipCode" id="zipCode" type="text" 
+										ng-model="addressToUpdate.zipCode"
+										maxlength="5" required/>
+								</div>
+							</div>
+						</td>
+					<tr>
+						<td>
+							<div class="form-group row">
+								<div class="col-sm-12">
+									<label for="addressNote">Address Note:</label>
+									<textarea class="form-control" id="addressNote" ng-model="addressToUpdate.addressNote"
+										rows="3" maxlength="255"></textarea>
+								</div>
+							</div>	
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+</div>

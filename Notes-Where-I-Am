@@ -1,0 +1,75 @@
+POJOs are all setup
+	AddressType
+		This is an enum... not sure if that was the right direction to go. It seems to automatically assign enums
+			pretty easily actually. -- I can make the database know that it is accepting an enum and have
+			it check that it is one of the available values.
+	Address
+		'updateAddressNoteByAddressId' -- This can be done with update address since I have to pass in the
+		whole address anyway.
+			- Just for what I'm doing I really only need to update and not add. Adding 
+			can/will be done via update
+		'deleteAddressNoteByAddressId' -- This also gets done with update address, I just need to pass the whole address with the 
+		note either empty or null. If I pass the note in null the return statement won't include it but when I get it later it just
+		comes back as an empty string.
+	Customer
+		'updateCustomerNotebyCustomerId'
+			- Same as on address, update will essentially also add
+			- Again, same as address, I can add, change or delete the note using update Customer since I'd have to pass in the 
+			whole Customer object
+		'deleteCustomerNoteByCustomerId'
+	OrderItem
+		'addOrderItem'
+		'getOrderItemsByOrderId' - done
+		'updateOrderItem'
+		'deleteOrderItem'
+	OrderNote
+		'addOrderNote'
+		'getOrderNoteByOrderId'
+		'updateOrderNote'
+		'deleteOrderNote'
+	Order
+		- I need to add a thing where I can pass in and store how many people the order is
+		for so that I can make it tell you how many pizzas the order needs.
+		- 'addOrder' - It's in there but it doesn't work yet...
+	MenuItem
+		- SQL table holds all of the items that can be ordered. Have a mock version
+		and I've written the SQL code to create the database and fill it with the 
+		available items.
+	CateringUtils
+	Error
+	
+	
+CateringDao is setup as an interface to build Mock and Impl off of.
+	Impl exists but has nothing in it yet.
+	Working on building Mock.
+		Building Controller and Service as I build the Mock.
+		Adding all methods to the Interface as I build the Mock.
+		
+Things the Mock can do - Verified by Postman!
+	getAllAddresses
+	getAddressByAddressId
+	getAllContacts
+	getContactByContactId
+	getContactByPhoneNumber
+	getContactByName
+		can send in both names or just a first name or just a last name (still need to send empty string for the missing name)
+	getAllOrders
+	getOrderByOrderId
+	getOrderHistoryByContactId
+	deleteByOrderId
+	addContact
+	addAddress
+	updateAddress
+	updateContact
+	
+Error Codes I've made:
+	100 - Invalid AddressID
+	101 - Invalid ContactID
+	102 - Contact Phone Number does not exist.
+	103 - No Customer by that name or both fields left blank
+	104 - OrderId does not exist
+	
+	
+--------------
+isBuffetOrder
+pricePerHead

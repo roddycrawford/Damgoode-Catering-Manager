@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" href="images/favicon.ico">
+<title>Damgoode Catering</title>
+
+<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<!-- AngularJS and route function -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<!-- Load my javascript file -->
+	<script src="js/dgcatering.js"></script>
+<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Parisienne|Roboto&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- Font Awesome Icons -->	
+	<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' 
+	integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' 
+	crossorigin='anonymous'>
+<!-- My CSS  -->
+	<link rel="stylesheet" type="text/css" href="css/dgcatering.css">
+</head>
+<body ng-app="dgCateringApp" ng-controller="masterController">
+	<div style="background-color:rgba(255, 255, 255, 0.9);" class="full-height-background">
+		<div class="content">
+	<!-- Navbar -->
+			<nav class="navbar navbar-default navbar-fixed-top bg-dgp-gray">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" 
+							data-toggle="collapse" data-target="#myNavbar">
+							<span class="fas fa-bars text-dgp-red"></span>
+						</button>
+						<a class="navbar-brand" href="http://www.damgoodepies.com" target="_blank">Damgoode Pies</a>
+					</div>
+					<div class="collapse navbar-collapse" id="myNavbar">
+						<ul class="nav navbar-nav">
+		<!-- 				<li><a href="#!home"><span class="fas fa-home"></span> Home</a></li>   -->
+							<li class="{{homeScreenActive}}"><a href='#!orders'><span class='fas fa-pizza-slice'></span> Orders</a></li>
+				<!--			<li><a href='#!addresses'><span class="far fa-address-book"></span> Addresses</a></li>  -->
+							<li class="{{customerScreenActive}}"><a href='#!customers'><span class="far fa-address-card"></span> Customers</a></li>
+							<li class="{{dailyNoteScreenActive}}"><a href='#!dailynotes'><span class="fas fa-sticky-note"></span> Daily Notes</a></li>
+							<li class="{{stackScreenActive}}"><a href='#!stacks'><span class="fas fa-stream"></span> Stacks</a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li class="{{resumeScreenActive}}"><a href="#!resume"><span class="far fa-file-alt"></span> Resume</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<br><br>
+			<div class="container-fluid">
+				<div ng-view></div>
+			</div>
+		</div>
+		<div class="footer-bar"></div>
+		<div class="footer">
+			<div class="row containerx">
+				<div class="col-xs-2">
+					<img src="images/dgplogo.png" class="dgplogo">
+				</div>
+				<div class="col-xs-8">
+					<span id="appName" class="center-block text-dgp-red" 
+						style="text-align:center;">Damgoode Catering Manager</span>
+				</div>
+				<div class="col-xs-2 text-center">
+					<p>
+						<span class="far fa-copyright"></span> 2019 Roddy Crawford
+						<br>
+						501-352-0642
+						<br>
+						roddycrawford@gmail.com
+						<br>
+						<span class="footer-links">
+						| <a href="https://www.linkedin.com/in/roddy-crawford" 
+							class="fab fa-linkedin" target="_blank"></a>
+						 | 
+						<a href="https://www.facebook.com/roddy.crawford" 
+							class="fab fa-facebook-square" target="_blank"></a>
+						 |
+						</span>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

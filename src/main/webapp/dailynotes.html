@@ -1,0 +1,95 @@
+<div class="container">
+	<div class="container">
+		<div ng-show="showMainDailyNoteScreen">
+			<table class="table table-hover table-bordered text-center">
+				<tr>
+					<td colspan="12" class='text-center bg-dgp-red text-dgp-gray'>
+						<h4><strong>All Daily Notes</strong></h4>
+					</td>
+				</tr>
+				<tr class='bg-dgp-gray'>
+					<th class="text-center col-sm-3">Time Stamp</th>
+					<th class="text-center col-sm-9">Note</th>
+				</tr>
+				<tr class='table-info-row' ng-repeat="dailyNote in dailyNotes" 
+						ng-click="viewNote(dailyNote)">
+					<td class="table-info-row col-sm-3">{{dailyNote.createDateTime | date : "short"}}</td>
+					<td class="table-info-row col-sm-9">{{dailyNote.dailyNote}}</td>
+				</tr>
+				<tr>
+					<td colspan="12" class='text-center bg-dgp-gray'>
+						<h4>Select a Note for Detail</h4>
+					</td>
+				</tr>
+			</table>
+			<button type="button" class="btn btn-success" id="detailButtons" 
+				ng-click="goToNewDailyNote()">
+				<span class="glyphicon glyphicon-plus"></span> 
+				Add New Daily Note
+			</button>
+		</div>
+		
+		<div ng-show="showDailyNoteDetailScreen">
+			<div class="panel panel-info">
+				<div class="panel-heading"><strong>Note Created On: </strong>{{noteToView.createDateTime | date : "short"}}</div>
+				<div class="panel-body">{{noteToView.dailyNote}}</div>
+			</div>		
+			<div class="btn-group" id="detailButtons">
+				<button type="button" class="btn btn-warning"
+					ng-click="returnToMainDailyNoteScreen()">
+					Return to List 
+					<span class="glyphicon glyphicon-share-alt"></span>
+				</button>
+			</div>  
+			<br><br>
+		</div>
+		
+		<div ng-show="showCreateNewDailyNoteScreen">
+			<form name="newDailyNoteForm">
+				<div class="detailButtons">
+					<button type="button" class="btn btn-success" 
+						ng-click="postNewDailyNote()"
+						ng-disabled="newDailyNoteForm.$invalid">
+						<span class="glyphicon glyphicon-plus"></span> 
+						Add New Daily Note
+					</button>
+					<button type="button" class="btn btn-primary"
+						ng-click="clearNewDailyNote()">
+						<span class="far fa-file"></span>
+						 Clear Form	
+					</button>
+					<button type="button" class="btn btn-warning"
+						ng-click="returnToMainDailyNoteScreen()">
+						Return to List 
+						<span class="glyphicon glyphicon-share-alt"></span>
+					</button>
+				</div>
+				<br><br>
+				<table class="table table-bordered bg-dgp-gray">
+					<tr class="bg-dgp-red">
+						<th class="text-center text-dgp-gray">
+							<h4><strong>New Daily Note for: {{todaysDate | date : "shortDate"}}</strong></h4>
+						</th>
+					</tr>
+					<tr>
+						<td>
+							<div class="form-group row">
+								<div class="col-sm-12">
+									<label for="newNote">New Note: 
+										<span class="text-danger" ng-show="newDailyNoteForm.newNote.$invalid">
+											Required!
+										</span>
+									</label>
+									<textarea type="text" id="newNote" name="newNote"
+										ng-model="newDailyNote.dailyNote"
+										maxlength="1000"
+										rows="8" class="form-control" required></textarea>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,227 @@
+<div class="container">
+	<div class="container text-dgp-black">
+		<div ng-show="showMainCustomerScreen">
+			<h4 class="text-center">
+				Start typing in the search field to search by 'Name', 'Phone Number', or 'Email'.
+			</h4>
+			<label for="customerSearch">Search:</label>
+			<input id="customerSearch" type="text" ng-model="customerSearch" 
+				class="form-control" />
+			<table class="table table-hover table-bordered text-center">
+				<tr>
+					<td colspan="4" class="bg-dgp-red text-dgp-gray">
+						<h4><strong>All Customers</strong></h4>
+					</td>
+				</tr>
+				<tr class='bg-dgp-gray'>
+					<th class="text-center">Customer Id</th>
+					<th class="text-center">Name</th>
+					<th class="text-center">Phone Number</th>
+					<th class="text-center">Email</th>
+				</tr>
+				<tr class='table-info-row' ng-repeat="customer in customers | filter:customerSearch" 
+						ng-click="updateCustomerScreen(customer)">
+					<td class="table-info-row">{{customer.customerId}}</td>
+					<td class="table-info-row">{{customer.customerFirstName + " " + customer.customerLastName}}</td>
+					<td class="table-info-row">{{customer.phoneNumber | phoneNumber}}</td>
+					<td class="table-info-row">{{customer.email}}</td>
+				</tr>
+				<tr>
+					<td colspan="4" class='text-center bg-dgp-gray'>
+						<h4>Select a Customer for Detail</h4>
+					</td>
+				</tr>
+			</table>
+			<button type="button" class="btn btn-success detailButtons" 
+				ng-click="updateCustomerScreen(emptyCustomer)">
+				<span class="glyphicon glyphicon-plus"></span>
+		 		 Add New Customer
+			</button>
+		</div>
+		
+		<div ng-show="showCustomerDetailScreen">
+			<br>
+			<form name="customerForm" novalidate>
+				<div class="detailButtons">
+					<button type="button" class="btn btn-success"
+						ng-click="saveCustomer()" ng-disabled="customerForm.$invalid">
+						<span class='fa fa-save'></span>
+						 Save Customer
+					</button>
+					<button type="button" class="btn btn-warning"
+						ng-click="returnToAllCustomers()">
+						Return to List 
+						<span class="glyphicon glyphicon-share-alt"></span>
+					</button>
+				</div>
+				<table class="table table-bordered bg-dgp-gray">
+					<tr class="bg-dgp-red">
+						<th class="text-center">Customer Id: {{customerToUpdate.customerId}}</th>
+					</tr>
+					<tr>
+						<td>
+							<div class="form-group row">
+								<div class="col-md-3">
+									<label for="firstName">First Name: 
+										<span class="text-danger" ng-show="customerForm.firstName.$invalid">
+											Required!
+										</span>
+									</label>
+									<input id="firstName" name="firstName" type="text" class="form-control"
+										ng-model="customerToUpdate.customerFirstName"
+										maxlength="15" required/>
+								</div>
+								<div class="col-md-3">
+									<label for="lastName">Last Name: 
+										<span class="text-danger" ng-show="customerForm.lastName.$invalid">
+											Required!
+										</span>
+									</label>
+									<input id="lastName" name="lastName" type="text" class="form-control"
+										ng-model="customerToUpdate.customerLastName"
+										maxlength="15" required/>
+								</div>
+								<div class="col-md-3">
+									<label for="phoneNumber">Phone Number: 
+										<span class="text-danger" ng-show="customerForm.phoneNumber.$invalid">
+											Required!
+										</span>
+									</label>
+									<input id="phoneNumber" name="phoneNumber" type="text" class="form-control"
+										maxlength="10" minlength="10"
+										ng-model="customerToUpdate.phoneNumber" required/>
+								</div>
+								<div class="col-md-3">
+									<label for="email">Email: 
+										<span class="text-danger" ng-show="customerForm.email.$error.required">
+											Required!
+										</span>
+										<span class="text-warning" ng-show="customerForm.email.$error.email">
+											Invalid email address!
+										</span>
+									</label>
+									<input id="email" name="email" type="email" ng-model="customerToUpdate.email"
+										class="form-control"
+										maxlength="50" required/>
+								</div>
+							</div>			
+						</td>							
+					</tr>
+					<tr>
+						<td>
+							<div class="form-group row">
+								<div class="col-md-8">
+									<label for="locationName">Location Name: </label>
+									<input id="locationName" type="text" ng-model="customerToUpdate.address.businessName" 
+										class="form-control"
+										maxlength="25" />
+								</div>
+								<div class="col-md-4">
+									<label for="addressType">Address Type: 
+										<span class="text-danger" ng-show="customerForm.addressType.$invalid">
+											Required!
+										</span>
+									</label> 
+									<select id="addressType" name="addressType" class="form-control"
+										ng-options="value for value in addressTypes" 
+										ng-model="customerToUpdate.address.addressType" required>
+							</select>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="form-group row">
+								<div class="col-md-3">
+									<label for="streetNum">Street Number: 
+										<span class="text-danger" ng-show="customerForm.streetNum.$invalid">
+											Required!
+										</span>
+									</label>
+									<input id="streetNum" name="streetNum" type="text" class="form-control"
+										ng-model="customerToUpdate.address.streetNum"
+										maxlength="10" required/>
+								</div>
+								<div class="col-md-6">
+									<label for="streetName">Street Name: 
+										<span class="text-danger" ng-show="customerForm.streetName.$invalid">
+											Required!
+										</span>
+									</label>
+									<input id="streetName" name="streetName" type="text" class="form-control"
+										ng-model="customerToUpdate.address.streetName"
+										maxlength="50" required/>
+								</div>
+								<div class="col-md-3">
+									<label for="roomNum">Room/Suite/Apt Number:</label>
+									<input id="roomNum" type="text" ng-model="customerToUpdate.address.roomNum"
+										class="form-control"
+										maxlength="11" />
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="form-group row">
+								<div class="col-md-6">
+									<label for="city">City: 
+										<span class="text-danger" ng-show="customerForm.city.$invalid">
+											Required!
+										</span>
+									</label>
+									<input id="city" name="city" type="text" class="form-control"
+										ng-model="customerToUpdate.address.city"
+										maxlength="15" required/>
+								</div>
+								<div class="col-md-3">
+									<label for="state">State: 
+										<span class="text-danger" ng-show="customerForm.state.$invalid">
+											Required!
+										</span>
+									</label>
+									<input id="state" name="state" type="text" class="form-control"
+										ng-model="customerToUpdate.address.state"
+										maxlength="2" required/>
+								</div>
+								<div class="col-md-3">
+									<label for="zipCode">Zip Code: 
+										<span class="text-danger" ng-show="customerForm.zipCode.$invalid">
+											Required!
+										</span>
+									</label>
+									<input id="zipCode" name="zipCode" type="text" class="form-control"
+										ng-model="customerToUpdate.address.zipCode"
+										maxlength="5" required/>
+								</div>
+							</div>
+						</td>
+					<tr>
+						<td>
+							<div class="form-group row">
+								<div class="col-sm-12">
+									<label for="addressNote">Address Note:</label>
+									<textarea id="addressNote" type="text" 
+										ng-model="customerToUpdate.address.addressNote"
+										rows="2" class="form-control" maxlength="255"></textarea>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="form-group row">
+								<div class="col-sm-12">
+									<label for="customerNote">Customer Note:</label><br>
+									<textarea id="customerNote" type="text" ng-model="customerToUpdate.customerNote"
+										rows="2" class="form-control" maxlength="255"></textarea>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</form>	
+		</div>
+	</div>
+</div>

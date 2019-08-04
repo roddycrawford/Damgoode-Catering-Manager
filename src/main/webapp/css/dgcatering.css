@@ -1,0 +1,194 @@
+@charset "UTF-8";
+
+.full-height-background {
+  min-height: 100vh;
+}
+
+#customerSearch {
+	margin-bottom: 5px;
+}
+
+.brandName {
+	font-size: 72px;
+	font-family: 'parisienne', cursive;
+	float: center;
+	color: #e4e4e3;
+}
+
+#homeScreenPanel .jumbotron {
+	background-color : #e12626;
+	height : 250px;
+	color: white;
+}
+
+#head {
+	text-align: center;
+	font-family: 'parisienne', cursive;"
+	height: auto;
+	padding: 30px;
+}
+
+#mypic {
+	max-width: 200px;
+	height: auto;
+	float: right
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	background-image: url('../images/Watermark.jpg');
+	background-size: 400px;
+	background-attachment: fixed;
+}
+
+.navbar li a, .navbar-brand {
+	color: #e12626 !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #e4e4e3 !important;
+    background-color: #e12626 !important;
+}
+  
+.navbar-default .navbar-toggle {
+    border-color: transparent !important;
+    color: #e12626 !important;
+}
+
+.jumbotron {
+	padding-bottom: 15px;
+}
+
+#orderStatusButtons, #detailButtons, .detailButtons {
+	float: right;
+	margin-bottom: 5px;
+	vertical-align: baseline;
+}
+
+#orderItemUpdateScreen, #orderScreenAddButtons {
+	padding: 20px;
+}
+
+
+.bg-dgp-red {
+	background-color: #e12626;
+}
+
+.bg-dgp-gray {
+	background-color: #e4e4e3;
+}
+
+.bg-dgp-black {
+	background-color: #1a1919;
+}
+
+.text-dgp-red {
+	color: #e12626
+}
+
+.text-dgp-black {
+	color: #1a1919;
+}
+
+.text-dgp-gray {
+	color: #e4e4e3;
+}
+
+.section-header {
+	color: #e12626;
+}
+
+table {
+	background-color: white;
+}
+
+.order-item-home-screen {
+	padding: 20px;
+}
+
+.modal-header, .modal-body {
+	text-align: center;
+}
+
+.limeGreen {
+	color: LimeGreen;
+}
+
+.red {
+	color: Red;
+}
+
+.content {
+	min-height: calc(100vh - 140px);
+	padding: 25px 0px;
+}
+
+
+
+.modal-header {
+	background-color: #e12626;
+	color: #e4e4e3;
+}
+
+.modal-body, .modal-footer {
+	background-color: #e4e4e3;
+	color: #1a1919;
+}
+
+.infoBox {
+	border: 2px solid;
+	border-color: #5bc0de;
+	padding: 5px;
+}
+
+.errorBox {
+	border: 2px solid;
+	border-color: #d9534f;
+	padding: 5px;
+}
+
+input.ng-invalid, select.ng-invalid {
+	border: 2px solid;
+	border-color: #d9534f;
+	background-color: #f9e4e3;
+}
+
+.successBox {
+	border: 2px solid;
+	border-color: #5cb85c;
+	padding: 5px;
+}
+
+.centerThis {
+	float: center;
+}
+
+.footer-bar {
+	background-color: #e12626;
+	height: 10px;
+	width: 100%;
+}
+
+.footer {
+   width: 100%;
+   height: 130px;
+   background-color: #e4e4e3;
+   color: black;
+   padding: 25px;
+}
+
+.dgplogo {
+	width: 100px;
+	height: auto;
+	float: left;
+}
+
+#appName {
+	font-family: 'parisienne', cursive;
+	font-size:48px;
+}
+
+.footer-links {
+	font-size:18px;
+	letter-spacing:5px;
+}
